@@ -1,0 +1,17 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: agendaapp-sqlserver
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Coti@2026"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1435:1433"
+    volumes:
+      - agendaapp_sqlserver_data:/var/opt/mssql
+
+volumes:
+  agendaapp_sqlserver_data:
+    name: agendaapp_sqlserver_data

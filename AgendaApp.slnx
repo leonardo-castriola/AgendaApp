@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path="docker-compose.yml" />
+  </Folder>
   <Project Path="AgendaApp.API/AgendaApp.API.csproj" />
   <Project Path="AgendaApp.Domain/AgendaApp.Domain.csproj" Id="972c8138-ea05-4200-8f86-74554b34ffd2" />
   <Project Path="AgendaApp.Infra.Data/AgendaApp.Infra.Data.csproj" Id="2442335a-b065-4d34-b996-15d5520bf00e" />
