@@ -15,4 +15,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AgendaApp.Domain\AgendaApp.Domain.csproj" />
+    <ProjectReference Include="..\AgendaApp.Infra.Data\AgendaApp.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

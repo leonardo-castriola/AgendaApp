@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AgendaApp.Api.Dtos;
+using AgendaApp.Domain.Entities;
+using AgendaApp.Infra.Data.Mappings;
+using AgendaApp.Infra.Data.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaApp.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/categorias")]
     [ApiController]
     public class CategoriasController : ControllerBase
     {
@@ -11,7 +15,25 @@ namespace AgendaApp.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok();
+            //Consultando todas as categorias no banco de dados
+            var categoriaRepository = new CategoriaRepository();
+            var categorias = categoriaRepository.ObterTodos();
+
+            //Copiando os dados da entidade para o DTO
+            var response = categorias.Select(c => ToResponse(c)).ToList();
+
+            //Retornando os dados
+            return Ok(response);
+        }
+
+        //Método auxiliar para copiar os dados da
+        //classe de entidade para o dto (record)
+        private CategoriaResponse ToResponse(Categoria categoria)
+        {
+            return new CategoriaResponse(
+                    categoria.Id,
+                    categoria.Descricao
+                );
         }
     }
 }
